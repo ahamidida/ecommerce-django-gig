@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Four Segments Webpage</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-sm-8 col-md-6 col-lg-4 segment">
+				<h2>Segment 1</h2>
+				{{ table | safe }}
+			</div>
+			<div class="col-sm-8 col-md-6 col-lg-4 segment">
+				<h2>Segment 2</h2>
+				<img src="data:image/png;base64,{{ plot1 }}" class="img-fluid">
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-sm-8 col-md-6 col-lg-4 segment">
+				<h2>Segment 3</h2>
+				<form method="POST">
+					{% csrf_token %}
+					<label for="my_select">Select an option:</label>
+					<input type="number" value="K" id="K" name="K">
+					<button type="submit">Submit</button>
+				</form>
+				<img src="data:image/png;base64,{{ plot2 }}" class="img-fluid">
+			</div>
+			<div class="col-sm-8 col-md-6 col-lg-4 segment">
+				<h2>Segment 4</h2>
+				{{ rfm_table | safe }}
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
