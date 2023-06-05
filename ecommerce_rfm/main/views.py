@@ -34,7 +34,7 @@ def index(request):
     loaded_rfm_model['rfm_table']=rfm_table.to_html()
 
     plt.figure(figsize=(7,7))
-    
+
 
     # Generate a list of random RGB values
     def generate_colors(num_clusters):
@@ -42,7 +42,7 @@ def index(request):
     # Convert RGB values to hex codes
             colors = ['#%02x%02x%02x' % c for c in colors]
             return colors
-        
+
     Colors = generate_colors(k_value)
     loaded_rfm_scores['Color'] = loaded_rfm_scores['Cluster'].map(lambda p: Colors[p])
     ax = loaded_rfm_scores.plot(    

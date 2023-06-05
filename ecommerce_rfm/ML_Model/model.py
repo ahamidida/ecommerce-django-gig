@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 import joblib
 
 
-    
+
 df=pd.read_csv("data.csv")
 
 df=df.drop(df[df['total_purchase'] < 0].index)
@@ -20,7 +20,7 @@ stats = df.groupby('weekday')['total_purchase'].agg(['mean', 'std'])
 weekday_table = pd.DataFrame({'Weekday': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                                'Mean': stats['mean'].values,
                                'Standard Deviation ': stats['std'].values,})
-    
+
 df['day_type'] = df['weekday'].apply(lambda x: 'Weekend' if x in [3, 4] else 'Weekday')
 weekday_data = df.loc[df['day_type'] == 'Weekday', 'total_purchase']
 weekend_data = df.loc[df['day_type'] == 'Weekend', 'total_purchase']
@@ -63,7 +63,7 @@ def RScoring(x,p,d):
                 return 3
             else:
                 return 4
-        
+
 def FnMScoring(x,p,d):
             if x <= d[p][0.25]:
                 return 4
